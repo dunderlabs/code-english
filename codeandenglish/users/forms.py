@@ -38,4 +38,4 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['full_name']
+        fields = ['full_name', 'country']

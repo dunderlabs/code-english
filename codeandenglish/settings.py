@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Others apps
+    'django_countries',
+
     # My apps
     'codeandenglish.users',
     'codeandenglish.core'

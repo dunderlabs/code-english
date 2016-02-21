@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
+from django_countries.fields import CountryField
+
 from codeandenglish.users.utils import (
     send_template_mail, default_token_generator
 )
@@ -49,6 +51,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(_('staff status'), default=False)
     is_active = models.BooleanField(_('active'), default=True)
     date_joined = models.DateTimeField(_('date joined'), default=now)
+
+    country = CountryField()
 
     objects = UserManager()
 
