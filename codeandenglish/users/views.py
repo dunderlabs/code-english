@@ -1,9 +1,10 @@
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.decorators import login_required
-
+from django.core.urlresolvers import reverse
+from django.contrib import messages
 from django.contrib.auth.views import (
     login as login_view,
     logout as logout_view,
@@ -14,7 +15,7 @@ from django.contrib.auth.views import (
 )
 
 from codeandenglish.users.models import User
-from codeandenglish.users.forms import UserSignupForm, UserLoginForm
+from codeandenglish.users.forms import UserSignupForm, UserLoginForm, UserForm
 from codeandenglish.users.utils import default_token_generator
 
 
@@ -117,4 +118,28 @@ def user_password_reset_complete(request):
 
 @login_required
 def user_profile(request):
-    return render(request, template_name='users/user_profile.html')
+    context = {}
+    user_pk = request.user.pk
+    user = get_object_or_404(User, pk=user_pk)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'User edited successfully!')
+            return redirect(reverse('users:dashboard'))
+    else:
+        form = UserForm(instance=user)
+
+    context['form'] = form
+    context['user'] = user
+    return render(
+        request,
+        'users/user_profile.html',
+        context
+    )
+
+
+@login_required
+def dashboard(request):
+    return render(request, 'users/dashboard.html')

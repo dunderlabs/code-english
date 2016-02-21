@@ -32,3 +32,10 @@ class UserChangeForm(UserChangeForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['full_name']
