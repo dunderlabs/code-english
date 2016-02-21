@@ -113,3 +113,8 @@ def user_password_reset_complete(request):
         request,
         template_name='users/user_password_reset_complete.html'
     )
+
+
+@login_required
+def user_profile(request):
+    return render(request, template_name='users/user_profile.html')

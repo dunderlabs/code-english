@@ -137,3 +137,6 @@ LOGIN_URL = 'users:login'
 # LOGIN_REDIRECT_URL = 'users:dashboard'
 LOGOUT_URL = 'users:logout'
 AUTH_USER_MODEL = 'users.User'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
