@@ -84,3 +84,42 @@ class User(AbstractBaseUser, PermissionsMixin):
             },
             [self.email]
         )
+
+
+class Relationship(models.Model):
+    teacher = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name="relationship_user_teacher"
+    )
+    student = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name="relationship_user_student"
+    )
+    learn = models.CharField(max_length=128)
+    teach = models.CharField(max_length=128)
+    date_created = models.DateField(_('date joined'), default=now)
+
+    class Meta:
+        unique_together = (('teacher', 'student',  'learn', 'teach'),)
+
+
+class Subject(models.Model):
+    name = models.CharField(max_length=64)
+
+
+class Interest(models.Model):
+    OPTIONS = (
+        ('T', 'Teacher'),
+        ('S', 'Student'),
+    )
+    LEVELS = (
+        (0, 'Basic'),
+        (1, 'Intermediate'),
+        (2, 'Advanced')
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    iam = models.CharField(max_length=1, choices=OPTIONS)
+    level = models.CharField(max_length=1, choices=LEVELS)
+
+

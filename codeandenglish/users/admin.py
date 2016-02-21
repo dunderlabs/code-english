@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as UserAdmin_
 from django.utils.translation import ugettext as _
 
-from codeandenglish.users.models import User
+from codeandenglish.users.models import User, Subject, Interest, Relationship
 from codeandenglish.users.forms import UserSignupForm, UserChangeForm
 
 
@@ -27,5 +27,25 @@ class UserAdmin(UserAdmin_):
     form = UserChangeForm
     add_form = UserSignupForm
 
-
 admin.site.register(User, UserAdmin)
+
+
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin.site.register(Subject, SubjectAdmin)
+
+
+class InterestAdmin(admin.ModelAdmin):
+    list_display = ('user', 'subject', 'iam', 'level',)
+    search_fields = ('user', 'subject', 'iam', 'level',)
+
+admin.site.register(Interest, InterestAdmin)
+
+
+class RelationshipAdmin(admin.ModelAdmin):
+    list_display = ('teacher', 'student', 'learn', 'teach',)
+    search_fields = ('teacher', 'student', 'learn', 'teach',)
+
+admin.site.register(Relationship, RelationshipAdmin)
