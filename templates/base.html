@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head lang="pt-BR">
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Code&English{% endblock title %}
+    </title>
+</head>
+<body>
+    <section id="wrapper">
+        <div id="container">
+            {% block content %}{% endblock content %}
+        </div>
+    </section>
+    <footer>
+    </footer>
+</body>
+</html>
