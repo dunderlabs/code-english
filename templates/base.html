@@ -29,6 +29,7 @@
 			{% if user.is_authenticated %}
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
+					{% block nav_bar %}
 					<li>
 						<a href="{% url 'users:dashboard' %}">Dashboard<br></a>
 					</li>
@@ -40,6 +41,7 @@
 					<li class="active">
 						<a href="#">Notifications</a>
 					</li>
+					{% endblock nav_bar %}
 					<li>
 						<a href="{% url 'users:logout' %}">Logout</a>
 					</li>
