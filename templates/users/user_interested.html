@@ -23,14 +23,16 @@
                 data-toggle="collapse" type="button"><span class="sr-only">Toggle
                 navigation</span><span class="icon-bar"></span><span class=
                 "icon-bar"></span><span class="icon-bar"></span></button><a class=
-                "navbar-brand" href="#"><span>Code&amp;E</span><span>nglish</span></a>
+                "navbar-brand" href="#"><span>Code&amp;English</span></a>
             </div>
+
 
             <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
                         <a href="#">Dashboard</a>
                     </li>
+
 
                     <li>
                         <a href="#">Explore</a>
@@ -68,7 +70,7 @@
 
                                         <p>Want to Learn: English<br>
                                         &nbsp; &nbsp; - Level:&nbsp;Basic</p>
-                                        <a class="btn btn-lg btn-primary">Update Interests</a>
+                                        <a class="btn btn-lg btn-primary">Update Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,30 +85,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Update your profile</h1>
+                    <h1>Update your interests</h1>
 
-                        <form  method="POST" enctype="multipart/form-data" role="form">
-                        {% csrf_token %}
 
-                            {{ form.non_field_errors}}
+                    <form role="form">
+                        <div class="form-group">
+                            <label class="control-label" for=
+                            "exampleInputEmail1">Subject</label><input class="form-control" id=
+                            "exampleInputEmail1" placeholder="Enter the subject" type="email">
+                        </div>
 
-                            {% for field in form %}
-                                <div class="form-group">
-                                    {{ field.label_tag }}
-                                    {{ field }}
-                                    {{ field.errors }}
-                                </div>
-                            {% endfor %}
 
-                            <div class="form-inline">
-                                <button class="btn btn-primary form-control" 
-                                    type="submit">
-                                    <i class="fa fa-floppy-o"></i> 
-                                    Submit</button>
-                                <div class="form-group">
-                            </div>
+                        <div class="form-group">
+                            <label class="control-label" for="exampleInputEmail1">I
+                            am:</label><input class="form-control" id="exampleInputEmail1"
+                            placeholder="Select Teacher or Student" type="email">
+                        </div>
 
-                        </form>
+
+                        <div class="form-group">
+                            <label class="control-label" for=
+                            "exampleInputPassword1">Level</label><input class="form-control" id=
+                            "exampleInputPassword1" placeholder="Your level" type="text">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
