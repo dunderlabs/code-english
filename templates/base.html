@@ -26,7 +26,7 @@
 					<span>Code&amp;English</span>
 				</a>
 			</div>
-
+			{% if user.is_authenticated %}
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
@@ -45,6 +45,7 @@
 					</li>
 				</ul>
 			</div>
+			{% endif %}
 		</div>
 	</div>
 	<section class="section info-user">

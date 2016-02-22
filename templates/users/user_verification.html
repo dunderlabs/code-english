@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>My account</li>
+    <li class="active">Email verification</li>
+{% endblock breadcrumb %}
+
 {% block content %}
-<div class="container">
-	<h3>Cadastro realizado com sucesso</h3>
-	<p>
-		Um e-mail de confirmação foi enviado para <strong>{{ request.user.email }}</strong><br>
-	</p>
-	<p>
-		<a href="{% url 'users:user_profile' %}">
-			Continue
-		</a>
-	</p>
-</div>
+
+<h3>Cadastro realizado com sucesso</h3>
+<p>
+	Um e-mail de confirmação foi enviado para <strong>{{ request.user.email }}</strong><br>
+</p>
+<p>
+	<a href="{% url 'users:update_user_profile' %}">
+		Continue to update your profile
+	</a>
+</p>
+
 {% endblock %}
