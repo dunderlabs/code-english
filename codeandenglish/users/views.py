@@ -14,8 +14,10 @@ from django.contrib.auth.views import (
     password_reset_complete as password_reset_complete_view
 )
 
-from codeandenglish.users.models import User
-from codeandenglish.users.forms import UserSignupForm, UserLoginForm, UserForm
+from codeandenglish.users.models import User, Interest
+from codeandenglish.users.forms import (
+    UserSignupForm, UserLoginForm, UserForm, InterestForm
+)
 from codeandenglish.users.utils import default_token_generator
 
 
@@ -135,7 +137,7 @@ def update_user_profile(request):
     context['user'] = user
     return render(
         request,
-        'users/user_profile.html',
+        'users/update_profile.html',
         context
     )
 
@@ -150,3 +152,34 @@ def dashboard(request):
     context['learning_from'] = user.relationship_user_student.all()
     context['interests'] = user.interests.all()
     return render(request, 'users/dashboard.html', context)
+
+
+@login_required
+def update_interests(request):
+    context = {}
+    user = request.user
+
+    if request.method == 'POST':
+        form = InterestForm(request.POST)
+        if form.is_valid():
+            interest = form.save(commit=False)
+            interest.user = user
+            interest.save()
+            messages.success(request, 'User edited successfully!')
+            return redirect(reverse('users:update_interests'))
+    else:
+        form = InterestForm()
+
+    context['form'] = form
+    context['user'] = user
+    context['interests'] = user.interests.all()
+    return render(request, 'users/user_interests.html', context)
+
+
+@login_required
+def remove_interest(request, pk):
+    interest = get_object_or_404(Interest, pk=pk)
+    interest.delete()
+    messages.success(request, 'Interest removed successfully!')
+
+    return redirect(reverse('users:update_interests'))

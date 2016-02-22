@@ -5,7 +5,7 @@ from codeandenglish.users.views import (
     user_verification, user_verify, user_verify_done,
     user_password_reset, user_password_reset_done,
     user_password_reset_confirm, user_password_reset_complete,
-    update_user_profile, dashboard
+    update_user_profile, dashboard, update_interests, remove_interest
 )
 
 
@@ -33,4 +33,9 @@ urlpatterns = [
 
     url(r'^update_profile/$', update_user_profile, name='update_user_profile'),
     url(r'^dashboard/$', dashboard, name='dashboard'),
+    url(r'^interests/$', update_interests, name='update_interests'),
+    url(
+        r'^interests/(?P<pk>\d+)/remove/', remove_interest,
+        name='remove_interest'
+    ),
 ]
