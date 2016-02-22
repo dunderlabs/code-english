@@ -6,9 +6,7 @@ from codeandenglish.users.views import (
     user_password_reset, user_password_reset_done,
     user_password_reset_confirm, user_password_reset_complete,
     update_user_profile, dashboard, update_interests, remove_interest,
-    notifications, user_explore
-    notifications, remove_message
-
+    notifications, user_explore, remove_message
 )
 
 
