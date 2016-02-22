@@ -6,7 +6,7 @@ from codeandenglish.users.views import (
     user_password_reset, user_password_reset_done,
     user_password_reset_confirm, user_password_reset_complete,
     update_user_profile, dashboard, update_interests, remove_interest,
-    notifications, user_explore
+    notifications, user_explore, remove_message
 )
 
 
@@ -40,5 +40,10 @@ urlpatterns = [
         name='remove_interest'
     ),
     url(r'^notifications/$', notifications, name='notifications'),
+
     url(r'^explore/$', user_explore, name='user_explore'),
+    url(
+        r'^notifications/(?P<pk>\d+)/remove/', remove_message,
+        name='remove_message'
+    ),
 ]
