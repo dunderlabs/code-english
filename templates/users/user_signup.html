@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
+{% block breadcrumb %}
+<li><a href="{% url 'core:index' %}">Index</a></li>
+<li class="active">Signup</li>
+{% endblock breadcrumb %}
+
 {% block content %}
-<div class="container">
-	<form class="signup-form" action="." method="POST">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<p>
-			<input type="submit" value="Cadastrar-se">
-		</p>
-	</form>
-</div>
+<form class="signup-form" action="." method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<p>
+		<input type="submit" class="btn-primary form-control" value="Cadastrar-se">
+	</p>
+</form>
+
 {% endblock %}

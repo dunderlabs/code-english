@@ -4,8 +4,21 @@
 <li class="active">Dashboard</li>
 {% endblock breadcrumb %}
 
-{% block content %}
+{% block nav_bar %}
+    <li class="active">
+        <a href="{% url 'users:dashboard' %}">Dashboard<br></a>
+    </li>
 
+    <li>
+        <a href="{% url 'users:user_explore' %}">Explore</a>
+    </li>
+
+    <li>
+        <a href="#">Notifications</a>
+    </li>
+{% endblock nav_bar %}
+
+{% block content %}
 
 <div class="jumbotron">
 	<div class="row">

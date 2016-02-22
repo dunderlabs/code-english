@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
+from django.forms.widgets import PasswordInput, TextInput
 
 from codeandenglish.users.models import User, Interest
 
@@ -21,9 +22,17 @@ class UserSignupForm(forms.ModelForm):
 
         return m
 
+    def __init__(self, *args, **kwargs):
+        super(UserSignupForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'form-control'})
+        self.fields['password'].widget.attrs.update({'class': 'form-control'})
+
 
 class UserLoginForm(AuthenticationForm):
-    pass
+    username = forms.CharField(widget=TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email'}))
+    password = forms.CharField(widget=PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Senha'}))
 
 
 class UserChangeForm(UserChangeForm):
