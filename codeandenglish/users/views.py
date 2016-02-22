@@ -195,3 +195,27 @@ def notifications(request):
     context['user'] = user
     context['messages_received'] = user.messages_receiver.all()
     return render(request, 'users/notifications.html', context)
+
+
+def user_explore(request):
+    context = {}
+    user = request.user
+    user_subject_learn = [
+        u.subject.name for u in user.interests.filter(iam='S')
+    ]
+    user_subject_teach = [
+        u.subject.name for u in user.interests.filter(iam='T')
+    ]
+    teacher_users = [
+        i.user for i in Interest.objects.filter(
+            subject__name__in=user_subject_learn, iam='T'
+        )
+    ]
+    student_users = [
+        i.user for i in Interest.objects.filter(
+            subject__name__in=user_subject_teach, iam='S'
+        )
+    ]
+    context['teacher_users'] = teacher_users
+    context['student_users'] = student_users
+    return render(request, 'users/explore.html', context)

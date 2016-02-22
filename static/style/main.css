@@ -6791,3 +6791,6 @@ a.size:last-child {
 .description {
   font-size: 20px;
 }
+.user {
+  margin-bottom: 20px;
+}

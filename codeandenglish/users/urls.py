@@ -6,7 +6,11 @@ from codeandenglish.users.views import (
     user_password_reset, user_password_reset_done,
     user_password_reset_confirm, user_password_reset_complete,
     update_user_profile, dashboard, update_interests, remove_interest,
+<<<<<<< Updated upstream
     notifications
+=======
+    user_explore, user_invitations
+>>>>>>> Stashed changes
 )
 
 
@@ -40,4 +44,6 @@ urlpatterns = [
         name='remove_interest'
     ),
     url(r'^notifications/$', notifications, name='notifications'),
+    url(r'^invitations/$', user_invitations, name='user_invitations'),
+    url(r'^explore/$', user_explore, name='user_explore'),
 ]
