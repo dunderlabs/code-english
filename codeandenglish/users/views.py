@@ -117,7 +117,7 @@ def user_password_reset_complete(request):
 
 
 @login_required
-def user_profile(request):
+def update_user_profile(request):
     context = {}
     user_pk = request.user.pk
     user = get_object_or_404(User, pk=user_pk)

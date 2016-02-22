@@ -5,7 +5,7 @@ from codeandenglish.users.views import (
     user_verification, user_verify, user_verify_done,
     user_password_reset, user_password_reset_done,
     user_password_reset_confirm, user_password_reset_complete,
-    user_profile, dashboard
+    update_user_profile, dashboard
 )
 
 
@@ -31,6 +31,6 @@ urlpatterns = [
     url(r'^password-reset/complete/$', user_password_reset_complete,
         name='password_reset_complete'),
 
-    url(r'^profile/$', user_profile, name='user_profile'),
+    url(r'^update_profile/$', update_user_profile, name='update_user_profile'),
     url(r'^dashboard/$', dashboard, name='dashboard'),
 ]
