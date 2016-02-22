@@ -45,6 +45,8 @@ def user_signup(request):
 
 
 def user_login(request):
+    if request.user.is_authenticated():
+        return redirect('users:dashboard')
     return login_view(
         request,
         authentication_form=UserLoginForm,
