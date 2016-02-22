@@ -16,48 +16,35 @@
 									<h1>{{ user.full_name }}</h1>
 
 									<div class="col-md-12">
-										<p><span style="line-height: 28.5714px;">Email:
-										{{ user.email }}</span>
-										</p>
-										 <p><span style="line-height: 28.5714px;">Country:
-										{{ user.country.name }}</span>
-										</p>
-										{% for interest in interests %}
-											{% if interest.iam == 'T' %}
-												<p>I Can Teach:</p>
-												<p> - {{ interest.subject }} - 
-													{% if interest.level == 0 %}
-														Basic
-													{% elif interest.level == 1 %}
-														Intermediate
-													{% else %}
-														Advanced
-													{% endif %}
-												</p> 
-											{% elif interest.iam == "S" %}
-												<p>I Want to Learn:</p>
-												<p> - {{ interest.subject }} - 
-													{% if interest.level == 0 %}
-														Basic
-													{% elif interest.level == 1 %}
-														Intermediate
-													{% else %}
-														Advanced
-													{% endif %}
-												</p> 
-											{% endif %}
-										{% endfor %}
-
-										<div class="form-inline">
-											<div class="form-group">
-												<a href="{% url 'users:update_user_profile' %}" class="btn btn-primary form-control">Update Profile</a> 
-												
-											</div>
-											<div class="form-group">
-												<a class="btn btn-primary form-control">Update Interests</a>
-											</div>
-										</div>
-									</div>
+                                        <p><h4>I Can Teach:</h4></p>
+                                        {% for interest in interests %}
+                                            {% if interest.iam == 'T' %}
+                                                    <p> {{ interest.subject }} - 
+                                                        {% if interest.level == 0 %}
+                                                            <span class="badge">Basic</span>
+                                                        {% elif interest.level == 1 %}
+                                                        <span class="badge">Intermediate</span>
+                                                        {% else %}
+                                                        <span class="badge">Advanced</span>
+                                                        {% endif %}
+                                                    </p>                                                                                                
+                                            {% endif %}
+                                        {% endfor %}
+                                        <p><h4>I Want to Learn:</h4></p>
+                                        {% for interest in interests %}
+                                            {% if interest.iam == 'S' %}
+                                                    <p> {{ interest.subject }} - 
+                                                        {% if interest.level == 0 %}
+                                                            <span class="badge">Basic</span>
+                                                        {% elif interest.level == 1 %}
+                                                        <span class="badge">Intermediate</span>
+                                                        {% else %}
+                                                        <span class="badge">Advanced</span>
+                                                        {% endif %}
+                                                    </p>                                                                                                
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
 								</div>
 							</div>
 						</div>
