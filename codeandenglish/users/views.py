@@ -14,7 +14,7 @@ from django.contrib.auth.views import (
     password_reset_complete as password_reset_complete_view
 )
 
-from codeandenglish.users.models import User, Interest
+from codeandenglish.users.models import User, Interest, Message
 from codeandenglish.users.forms import (
     UserSignupForm, UserLoginForm, UserForm, InterestForm
 )
@@ -197,6 +197,7 @@ def notifications(request):
     return render(request, 'users/notifications.html', context)
 
 
+@login_required
 def user_explore(request):
     context = {}
     user = request.user
@@ -219,3 +220,12 @@ def user_explore(request):
     context['teacher_users'] = teacher_users
     context['student_users'] = student_users
     return render(request, 'users/explore.html', context)
+
+
+@login_required
+def remove_message(request, pk):
+    interest = get_object_or_404(Message, pk=pk)
+    interest.delete()
+    messages.success(request, 'Message removed successfully!')
+
+    return redirect(reverse('users:notifications'))
