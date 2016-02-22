@@ -142,4 +142,11 @@ def user_profile(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'users/dashboard.html')
+    context = {}
+    user = request.user
+
+    context['user'] = user
+    context['teaching_to'] = user.relationship_user_teacher.all()
+    context['learning_from'] = user.relationship_user_student.all()
+    context['interests'] = user.interests.all()
+    return render(request, 'users/dashboard.html', context)
