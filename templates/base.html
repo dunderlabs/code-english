@@ -47,9 +47,13 @@
 			</div>
 		</div>
 	</div>
-	<section id="wrapper">
-		<div id="container">
-
+	<section class="section info-user">
+		<div class="container">
+			<ol class="breadcrumb">
+				{% block breadcrumb %}
+			  <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
+			  {% endblock breadcrumb %}
+			</ol>
 			{% if messages %}
 				{% for message in messages %}
 					{% if message.tags == 'success' %}
