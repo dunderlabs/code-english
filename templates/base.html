@@ -35,11 +35,11 @@
 					</li>
 
 					<li>
-						<a href="#">Explore</a>
+						<a href="{% url 'users:user_explore' %}">Explore</a>
 					</li>
 
 					<li class="active">
-						<a href="#">Notifications</a>
+						<a href="{% url 'users:user_invitations' %}">Invitations</a>
 					</li>
 					{% endblock nav_bar %}
 					<li>
