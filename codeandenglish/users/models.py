@@ -103,9 +103,6 @@ class Relationship(models.Model):
     teach = models.CharField(max_length=128)
     date_created = models.DateField(_('date joined'), default=now)
 
-    class Meta:
-        unique_together = (('teacher', 'student',  'learn', 'teach'),)
-
     def __str__(self):
         t = self.teacher.get_short_name()
         s = self.student.get_short_name()
@@ -129,7 +126,9 @@ class Interest(models.Model):
         (1, 'Intermediate'),
         (2, 'Advanced')
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='interests'
+    )
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     iam = models.CharField(max_length=1, choices=OPTIONS)
     level = models.IntegerField(choices=LEVELS)
