@@ -35,7 +35,7 @@ def user_signup(request):
 
             user.send_verification_mail(request)
 
-            return redirect('users:user_verification')
+            return redirect('users:dashboard')
     else:
         f = UserSignupForm()
 
