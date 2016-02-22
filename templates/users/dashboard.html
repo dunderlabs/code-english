@@ -94,33 +94,37 @@
 
 <div class="section">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 class="text-center">You are teaching to</h1>
-			</div>
-		</div>
-		<div class="row">
-			{% for teaching in teaching_to %}
-
-				<div>
-					<div class="col-md-2">
-						<img class="img-circle img-responsive" src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
-					</div>
-
-					<div class="col-md-4">
-						<h3 class="text-left">{{ teaching.student.full_name }}</h3>
-						<p class="text-left">Teaching: {{ teaching.teach }}</p>
-					</div>
+		{% if teaching_to %}
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="text-center">You are teaching to</h1>
 				</div>
+			</div>
+			<div class="row">
+				{% for teaching in teaching_to %}
 
-			{% endfor %}
-		</div>
-		</div>
+					<div>
+						<div class="col-md-2">
+							<img class="img-circle img-responsive" src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+						</div>
+
+						<div class="col-md-4">
+							<h3 class="text-left">{{ teaching.student.full_name }}</h3>
+							<p class="text-left">Teaching: {{ teaching.teach }}</p>
+						</div>
+					</div>
+
+				{% endfor %}
+			</div>
+		{% else %}
+			<h1 class="text-center">Nothing to show by now</h1>
+		{% endif %}
 	</div>
 </div>
 
 <div class="section">
 	<div class="container">
+	{% if learning_from %}
 		<div class="row">
 			<div class="col-md-12">
 				<h1 class="text-center">You are learning from</h1>
@@ -140,6 +144,9 @@
 
 			{% endfor %}
 		</div>
+	{% else %}
+		<h1 class="text-center">Nothing to show by now</h1>
+	{% endif %}
 	</div>
 </div>
 {% endblock content %}

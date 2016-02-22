@@ -24,9 +24,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>
-					These users want to learn what you teach
-				</h1>
+				{% if student_users or teacher_users %}
+					<h1>
+						These users want to learn what you teach
+					</h1>
+				{% else %}
+					<h1>
+						Nothing to show by now
+					</h1>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -38,14 +44,16 @@
 			<div class="col-md-12">
 				<h1 class="text-center">
 				</h1>
-
-				<h1 class="text-center" style="color: rgb(0, 0, 0);">
-					Who do you want to teach
-				</h1>
+				{% if student_users %}
+					<h1 class="text-center" style="color: rgb(0, 0, 0);">
+						Who do you want to teach
+					</h1>
+				{% endif %}
 			</div>
 		</div>
 
 		<div class="row">
+		{% if student_users %}
 			{% for student in student_users %}
 				<div class="row user">
 					<div class="col-md-2">
@@ -73,6 +81,7 @@
 					</div>
 				</div>
 			{% endfor %}
+		{% endif %}
 		</div>
 	</div>
 </div>
@@ -81,13 +90,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+			{% if student_users %}
 				<h1 class="text-center">
 					These users can teach you
 				</h1>
+			{% endif %}
 			</div>
 		</div>
 
 		<div class="row">
+		{% if teacher_users %}
 			{% for teacher in teacher_users %}
 				<div class="row user">
 					<div class="col-md-2">
@@ -111,6 +123,7 @@
 					</div>
 				</div>
 			{% endfor %}
+		{% endif %}
 		</div>
 	</div>
 </div>
