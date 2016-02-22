@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">
+		<h1>
+			These users want to connect with you
+		</h1>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-center">
+		</h1>
+
+		<h1 class="text-center" style="color: rgb(0, 0, 0);">
+			Who do you want to teach
+		</h1>
+	</div>
+</div>
+{% for message in messages_received %}
+	<div class="row">
+		<div class="col-md-2">
+			<img class="img-circle img-responsive" src=
+			"http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+		</div>
+
+		<div class="col-md-4">
+			<h3 class="text-left">
+				{{ message.sender.full_name }}
+			</h3>
+
+			<p class="text-left">
+				Want to learn: Python
+			</p>
+			<a href="#"><i class="fa fa-3x fa-ban fa-fw text-danger"></i></a>
+			<a href="#"><i class="fa fa-3x fa-check fa-fw text-success"></i></a>
+		</div>
+	</div>
+{% endfor %}
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-center">
+			Who&nbsp; <span style="line-height: 1.1;">would&nbsp;</span>
+			<span style="color: inherit; line-height: 1.1;">you like to teach
+			you</span>
+		</h1>
+
+		<p class="text-center">
+			We are a group of skilled individuals.
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-2">
+		<img class="img-circle img-responsive" src=
+		"http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+	</div>
+
+	<div class="col-md-4">
+		<h3 class="text-left">
+			John Doe
+		</h3>
+
+		<p class="text-left">
+			Can teach: English<br>
+			Level: Basic
+		</p>
+		<a href="#"><i class="fa fa-3x fa-ban fa-fw text-danger"></i></a>
+		<a href="#"><i class="fa fa-3x fa-check fa-fw text-success"></i></a>
+	</div>
+
+	<div class="col-md-2">
+		<img class="img-circle img-responsive" src=
+		"http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+	</div>
+
+	<div class="col-md-4">
+		<h3 class="text-left">
+			John Doe
+		</h3>
+
+		<p class="text-left">
+			Can teach: English Expressions<br>
+			Level: Intermediate
+		</p>
+	</div>
+	<a href="#"><i class="fa fa-3x fa-ban fa-fw text-danger"></i></a> <a href=
+	"#"><i class="fa fa-3x fa-check fa-fw text-success"></i></a>
+</div>
+
+<div class="row">
+	<div class="col-md-2">
+		<img class="img-circle img-responsive" src=
+		"http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+	</div>
+
+	<div class="col-md-4">
+		<h3 class="text-left">
+			John Doe
+		</h3>
+
+		<p class="text-left">
+			Can teach: English Speack<br>
+			Level: Basic
+		</p>
+		<a href="#"><i class="fa fa-3x fa-ban fa-fw text-danger"></i></a>
+		<a href="#"><i class="fa fa-3x fa-check fa-fw text-success"></i></a>
+	</div>
+
+	<div class="col-md-2">
+		<img class="img-circle img-responsive" src=
+		"http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png">
+	</div>
+
+	<div class="col-md-4 text-center">
+		<h3 class="text-left">
+			John Doe
+		</h3>
+
+		<p class="text-left">
+			Can teach: English Expressions<br>
+			Level: Intermediate
+		</p>
+	</div>
+	<a href="#"><i class="fa fa-3x fa-ban fa-fw text-danger"></i></a> <a href=
+	"#"><i class="fa fa-3x fa-check fa-fw text-success"></i></a>
+</div>
+
+{% endblock content %}

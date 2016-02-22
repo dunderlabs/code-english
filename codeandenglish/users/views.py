@@ -185,3 +185,13 @@ def remove_interest(request, pk):
     messages.success(request, 'Interest removed successfully!')
 
     return redirect(reverse('users:update_interests'))
+
+
+@login_required
+def notifications(request):
+    context = {}
+    user = request.user
+
+    context['user'] = user
+    context['messages_received'] = user.messages_receiver.all()
+    return render(request, 'users/notifications.html', context)

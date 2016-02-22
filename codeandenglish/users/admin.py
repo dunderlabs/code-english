@@ -2,7 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as UserAdmin_
 from django.utils.translation import ugettext as _
 
-from codeandenglish.users.models import User, Subject, Interest, Relationship
+from codeandenglish.users.models import (
+    User, Subject, Interest, Relationship, Message
+)
 from codeandenglish.users.forms import UserSignupForm, UserChangeForm
 
 
@@ -49,3 +51,10 @@ class RelationshipAdmin(admin.ModelAdmin):
     search_fields = ('teacher', 'student', 'learn', 'teach',)
 
 admin.site.register(Relationship, RelationshipAdmin)
+
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('sender', 'receiver', 'created_at')
+    search_fields = ('sender', 'receiver')
+
+admin.site.register(Message, MessageAdmin)
